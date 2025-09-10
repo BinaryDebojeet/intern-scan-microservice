@@ -22,8 +22,8 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((err) => console.error('MongoDB connection error:', err));
 
 // Routes
-app.use('/api/v1', userRoutes);
-
+app.use('/', userRoutes);
+app.get('/health', (req, res) => res.json({ status: 'healthy life is best yayyy', service: 'user-service' }));
 app.listen(PORT, () => {
     console.log(`Auth & User Service running on port ${PORT}`);
 });
